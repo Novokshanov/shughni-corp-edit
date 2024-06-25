@@ -6,15 +6,24 @@ const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
 
 const TextList = () => {
   const [texts, setTexts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTexts = async () => {
       try {
-        const response = await axios.get('${apiBaseUrl}/texts');
-        setTexts(response.data);
+        const response = await axios.get(`${apiBaseUrl}/texts`);
+        if (Array.isArray(response.data)) {
+          setTexts(response.data);
+        } else {
+          throw new Error('Data format is incorrect');
+        }
       } catch (error) {
         console.error('Error fetching texts:', error);
+        setError(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -25,11 +34,19 @@ const TextList = () => {
     navigate(`/editor/${text}`);
   };
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error loading texts: {error.message}</p>;
+  }
+
   return (
     <div>
-      <h2>  Available Texts</h2>
+      <h2>Available Texts</h2>
       {texts.length === 0 ? (
-        <p>Loading...</p>
+        <p>No texts available</p>
       ) : (
         <ul>
           {texts.map((text, index) => (
