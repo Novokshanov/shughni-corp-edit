@@ -47,6 +47,8 @@ const Button = styled.button`
   font-size: 1em;
 `;
 
+const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
+
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -55,7 +57,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { username, password });
+      const response = await axios.post('${apiBaseUrl}/login', { username, password });
       localStorage.setItem('token', response.data.token);
       onLogin();
       navigate('/editor');

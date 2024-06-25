@@ -70,6 +70,8 @@ const NoAnalysis = styled.p`
   color: #ff0000;
 `;
 
+const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
+
 const TextEditor = () => {
   const { filename } = useParams();
   const [meta, setMeta] = useState({});
@@ -79,7 +81,7 @@ const TextEditor = () => {
   useEffect(() => {
     const fetchText = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/texts/${filename}`);
+        const response = await axios.get(`${apiBaseUrl}/texts/${filename}`);
         const jsonData = JSON.parse(response.data.text);
         setMeta(jsonData.meta);
         setSentences(jsonData.sentences);
@@ -94,7 +96,7 @@ const TextEditor = () => {
   const handleSave = async () => {
     try {
       const dataToSave = { meta, sentences };
-      await axios.put(`http://localhost:5000/api/texts/${filename}`, dataToSave);
+      await axios.put(`${apiBaseUrl}/texts/${filename}`, dataToSave);
       alert('File saved successfully');
     } catch (error) {
       console.error('Error saving text:', error);

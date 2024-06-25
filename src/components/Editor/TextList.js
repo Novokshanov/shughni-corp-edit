@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
+
 const TextList = () => {
   const [texts, setTexts] = useState([]);
   const navigate = useNavigate();
@@ -9,7 +11,7 @@ const TextList = () => {
   useEffect(() => {
     const fetchTexts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/texts');
+        const response = await axios.get('${apiBaseUrl}/texts');
         setTexts(response.data);
       } catch (error) {
         console.error('Error fetching texts:', error);
