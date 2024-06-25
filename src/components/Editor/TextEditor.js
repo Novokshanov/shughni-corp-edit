@@ -70,7 +70,7 @@ const NoAnalysis = styled.p`
   color: #ff0000;
 `;
 
-const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
+const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net';
 
 const TextEditor = () => {
   const { filename } = useParams();

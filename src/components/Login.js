@@ -47,7 +47,7 @@ const Button = styled.button`
   font-size: 1em;
 `;
 
-const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
+const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
