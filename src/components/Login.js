@@ -57,7 +57,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('${apiBaseUrl}/login', { username, password });
+      const response = await axios.post(`${apiBaseUrl}/login`, { username, password });
       localStorage.setItem('token', response.data.token);
       onLogin();
       navigate('/editor');
