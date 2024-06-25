@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net';
+const apiBaseUrl = 'https://novokshanov-shughni-corp-edit-975b.twc1.net/api';
 
 const TextList = () => {
   const [texts, setTexts] = useState([]);
