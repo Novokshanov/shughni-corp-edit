@@ -14,6 +14,7 @@ const TextList = () => {
     const fetchTexts = async () => {
       try {
         const response = await axios.get(`${apiBaseUrl}/texts`);
+        console.log('Response data:', response.data);
         if (Array.isArray(response.data)) {
           setTexts(response.data);
         } else {
