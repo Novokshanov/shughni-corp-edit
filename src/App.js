@@ -10,7 +10,7 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
 
   const handleLogin = () => {
-    localStorage.setItem('token', 'ome_token');
+    localStorage.setItem('token', 'some_token');
     setIsAuthenticated(true);
   };
 
@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <Router>
-      <div style={{ backgroundColor: '#f0f4f8', height: '100vh', overflow: 'auto' }}> {/* Add this div element */}
+      <div style={{ backgroundColor: '#f0f4f8', height: '100vh', overflow: 'auto' }}>
         <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Login onLogin={handleLogin} />} />

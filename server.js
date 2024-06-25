@@ -13,9 +13,6 @@ const SECRET_KEY = '123';
 app.use(bodyParser.json());
 app.use(cors());
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
-
 const users = [
   {
     id: 1,
@@ -74,6 +71,9 @@ app.put('/api/texts/:title', (req, res) => {
     res.send('File saved successfully');
   });
 });
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
 
 // The "catchall" handler: for any request that doesn't match the above, send back React's index.html file.
 app.get('*', (req, res) => {
