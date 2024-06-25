@@ -14,10 +14,10 @@ const App = () => {
     setIsAuthenticated(true);
   };
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem('token');
-  //   setIsAuthenticated(false);
-  // };
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
+  };
 
   return (
     <Router>
